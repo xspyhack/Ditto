@@ -1,2 +1,2 @@
 # Ditto
-A lightweight logging library written in Swift.
+A lightweight router written in Swift.
