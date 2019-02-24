@@ -24,4 +24,4 @@ if router.responds(to: url) {
 
 ## License
 
-Keldeo is available under the MIT License. See the LICENSE file for more info.
+Ditto is available under the MIT License. See the LICENSE file for more info.
