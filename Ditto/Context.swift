@@ -78,8 +78,8 @@ public struct Context<Coordinator> {
     }
 }
 
-extension Context {
-    public enum Error: Swift.Error {
+public extension Context {
+    enum Error: Swift.Error {
         case parsingArgumentFailed
     }
 }

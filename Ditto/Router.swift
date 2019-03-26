@@ -71,7 +71,7 @@ public final class Router<Coordinator>: Routing {
 }
 
 public extension Router {
-    public enum Error: Swift.Error, Equatable {
+    enum Error: Swift.Error, Equatable {
         public enum RegisterFailureReason: Equatable {
             case invalidScheme
             case invalidHost
@@ -102,11 +102,11 @@ public extension Router {
 
 public extension Router where Coordinator == Void {
     @discardableResult
-    public func route(to url: URL) -> Bool {
+    func route(to url: URL) -> Bool {
         return route(to: url, coordinator: ())
     }
 
-    public func responds(to url: URL) -> Bool {
+    func responds(to url: URL) -> Bool {
         return responds(to: url, coordinator: ())
     }
 }

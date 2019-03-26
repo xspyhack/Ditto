@@ -72,6 +72,9 @@ class Router {
                 }),
             ])
         } catch {
+            if let _ = error as? Ditto.Router<RoutingCoordinator>.Error {
+            } else if let _ = error as? Ditto.Context<RoutingCoordinator>.Error {
+            }
             print("register router failed with error: \(error)")
         }
     }
