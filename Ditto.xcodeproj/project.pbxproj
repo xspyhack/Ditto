@@ -141,7 +141,8 @@
 				FABCFF8C221AAA0A00DDD782 /* Extractable.swift */,
 				FABCFF71221AA93C00DDD782 /* Info.plist */,
 			);
-			path = Ditto;
+			name = Ditto;
+			path = Sources/Ditto;
 			sourceTree = "<group>";
 		};
 		FABCFF7A221AA93C00DDD782 /* DittoTests */ = {
@@ -153,7 +154,8 @@
 				FA72E2D0221BD98600A5E5CD /* RouteTests.swift */,
 				FABCFF7D221AA93C00DDD782 /* Info.plist */,
 			);
-			path = DittoTests;
+			name = DittoTests;
+			path = Tests/DittoTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -526,7 +528,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Ditto/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Ditto/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -553,7 +555,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Ditto/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Ditto/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -574,7 +576,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = DittoTests/Info.plist;
+				INFOPLIST_FILE = Tests/DittoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -592,7 +594,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = DittoTests/Info.plist;
+				INFOPLIST_FILE = Tests/DittoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
