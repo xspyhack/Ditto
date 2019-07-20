@@ -30,6 +30,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		78D9952622E2B5B900BBB486 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FABCFF64221AA93C00DDD782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FABCFF6C221AA93C00DDD782;
+			remoteInfo = Ditto;
+		};
 		FABCFF78221AA93C00DDD782 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FABCFF64221AA93C00DDD782 /* Project object */;
@@ -183,6 +190,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				78D9952722E2B5B900BBB486 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -335,6 +343,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		78D9952722E2B5B900BBB486 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FABCFF6C221AA93C00DDD782 /* Ditto */;
+			targetProxy = 78D9952622E2B5B900BBB486 /* PBXContainerItemProxy */;
+		};
 		FABCFF79221AA93C00DDD782 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FABCFF6C221AA93C00DDD782 /* Ditto */;
