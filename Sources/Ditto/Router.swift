@@ -110,3 +110,22 @@ public extension Router where Coordinator == Void {
         return responds(to: url, coordinator: ())
     }
 }
+
+extension Router {
+    typealias Handler = @convention(thin) (Context<Coordinator>) -> Bool
+
+    /// Register all routes
+    public func setup() {
+        SIL.install()
+        DispatchQueue.main.async {
+            self.register(symbols: SIL.shared.symbols)
+        }
+    }
+
+    private func register(symbols: [String: UnsafeMutableRawPointer?]) {
+        let routes: [(String, Route<Coordinator>.Handler)] = symbols.map {
+            ($0.key, unsafeBitCast($0.value, to: Handler.self))
+        }
+        try? register(routes)
+    }
+}

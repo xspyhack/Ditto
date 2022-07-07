@@ -25,58 +25,66 @@ class Router {
         router = Ditto.Router(schemes: Router.schemes, hosts: Router.hosts)
     }
 
-    static func register() {
-        do {
-            try shared.router.register([
-                // 首页
-                // alligator://home
-                ("/home", { context in
-                    let rootViewController = shared.appCoordinator?.rootViewController
-                    rootViewController?.navigationController?
-                        .popToRootViewController(animated: context.coordinator.animated)
-                    return true
-                }),
-                // 用户主页
-                // alligator://user/[id]
-                ("/user/:id", { context in
-                    guard let id: String = try? context.argument(forKey: "id") else {
-                        return false
-                    }
+    // 首页
+    // alligator://home
+    // https://www.alligator.com/home
+    @_silgen_name("ditto:/home")
+    func home(context: Context<RoutingCoordinator>) -> Bool {
+        let rootViewController = appCoordinator?.rootViewController
+        rootViewController?.navigationController?
+            .popToRootViewController(animated: context.coordinator.animated)
+        return true
+    }
 
-                    let vc = ProfileViewController(id: id)
-                    let coordinator = context.coordinator
-                    coordinator.show(vc)
-                    return true
-                }),
-                // 用浏览器打开链接
-                // alligator://browser?link=[url]
-                ("/browser", { context in
-                    guard let url: URL = context.parameter(forKey: "link") else {
-                        return false
-                    }
-                    // always present
-                    let safariViewController = SFSafariViewController(url: url)
-                    let coordinator = context.coordinator
-                    coordinator.present(safariViewController)
-                    return true
-                }),
-                // 切换环境
-                // alligator://development/environment?type=[debug|release]
-                ("/development/environment", { context in
-                    guard let environment: Environment = context.parameter(forKey: "type") else {
-                        return false
-                    }
-
-                    print("switch to environment: \(environment)")
-                    return true
-                }),
-            ])
-        } catch {
-            if let _ = error as? Ditto.Router<RoutingCoordinator>.Error {
-            } else if let _ = error as? Ditto.Context<RoutingCoordinator>.Error {
-            }
-            print("register router failed with error: \(error)")
+    // 用户主页
+    // alligator://user/[id]
+    // https://www.alligator.com/user/[id]
+    @_silgen_name("ditto:/user/:id")
+    func user(context: Context<RoutingCoordinator>) -> Bool {
+        guard let id: String = try? context.argument(forKey: "id") else {
+            return false
         }
+
+        let vc = ProfileViewController(id: id)
+        let coordinator = context.coordinator
+        coordinator.show(vc)
+        return true
+    }
+
+    // 用浏览器打开链接
+    // alligator://browser?link=[url]
+    // https://www.alligator.com/browser?link=[url]
+    @_silgen_name("ditto:/browser")
+    func browser(context: Context<RoutingCoordinator>) -> Bool {
+        guard let url: URL = context.parameter(forKey: "link") else {
+            return false
+        }
+        // always present
+        let safariViewController = SFSafariViewController(url: url)
+        let coordinator = context.coordinator
+        coordinator.present(safariViewController)
+        return true
+    }
+
+    // 开发专用
+    struct Development {
+        // 切换环境
+        // alligator://development/environment?type=[debug|release]
+        @_silgen_name("ditto:/development/environment")
+        func environment(context: Context<RoutingCoordinator>) -> Bool {
+            guard let url: URL = context.parameter(forKey: "link") else {
+                return false
+            }
+            // always present
+            let safariViewController = SFSafariViewController(url: url)
+            let coordinator = context.coordinator
+            coordinator.present(safariViewController)
+            return true
+        }
+    }
+
+    static func register() {
+        shared.router.setup()
     }
 
     @discardableResult
@@ -220,7 +228,7 @@ struct RoutingCoordinator {
     }
 }
 
-protocol RoutingCoordinatorDelegate: class {
+protocol RoutingCoordinatorDelegate: AnyObject {
     func coordinatorRepresentation() -> RoutingCoordinator.Representaion
 }
 

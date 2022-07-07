@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA4BFE8528769A520044F306 /* SIL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BFE8428769A520044F306 /* SIL.swift */; };
 		FA72E2CD221BD95100A5E5CD /* ContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA72E2CC221BD95100A5E5CD /* ContextTests.swift */; };
 		FA72E2CF221BD97E00A5E5CD /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA72E2CE221BD97E00A5E5CD /* RouterTests.swift */; };
 		FA72E2D1221BD98600A5E5CD /* RouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA72E2D0221BD98600A5E5CD /* RouteTests.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA4BFE8428769A520044F306 /* SIL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SIL.swift; sourceTree = "<group>"; };
 		FA72E2CC221BD95100A5E5CD /* ContextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextTests.swift; sourceTree = "<group>"; };
 		FA72E2CE221BD97E00A5E5CD /* RouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTests.swift; sourceTree = "<group>"; };
 		FA72E2D0221BD98600A5E5CD /* RouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTests.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		FABCFF6F221AA93C00DDD782 /* Ditto */ = {
 			isa = PBXGroup;
 			children = (
+				FA4BFE8428769A520044F306 /* SIL.swift */,
 				FABCFF70221AA93C00DDD782 /* Ditto.h */,
 				FABCFF87221AA95300DDD782 /* Routing.swift */,
 				FABCFF89221AAA0A00DDD782 /* Routable.swift */,
@@ -323,6 +326,7 @@
 				FABCFF91221AAA0B00DDD782 /* Route.swift in Sources */,
 				FABCFF92221AAA0B00DDD782 /* Extractable.swift in Sources */,
 				FABCFF94221AAA0B00DDD782 /* Router.swift in Sources */,
+				FA4BFE8528769A520044F306 /* SIL.swift in Sources */,
 				FABCFF88221AA95300DDD782 /* Routing.swift in Sources */,
 				FABCFF93221AAA0B00DDD782 /* Endpoint.swift in Sources */,
 				FABCFF8F221AAA0B00DDD782 /* Routable.swift in Sources */,
