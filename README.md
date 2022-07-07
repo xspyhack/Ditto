@@ -22,6 +22,20 @@ if router.responds(to: url) {
 }
 ```
 
+## Advanced
+
+```swift
+class Router {
+    // Register home page route use silgen prefix `ditto:`
+    // alligator://home
+    // https://www.alligator.com/home
+    @_silgen_name("ditto:/home")
+    func home(context: Context<RoutingCoordinator>) -> Bool {
+        return true
+    }
+}
+```
+
 ## License
 
 Ditto is available under the MIT License. See the LICENSE file for more info.
