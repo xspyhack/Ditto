@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA4BFE8528769A520044F306 /* SIL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BFE8428769A520044F306 /* SIL.swift */; };
+		FA55E7832877DDE9009803AA /* Deeplink.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55E7822877DDE9009803AA /* Deeplink.swift */; };
 		FA72E2CD221BD95100A5E5CD /* ContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA72E2CC221BD95100A5E5CD /* ContextTests.swift */; };
 		FA72E2CF221BD97E00A5E5CD /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA72E2CE221BD97E00A5E5CD /* RouterTests.swift */; };
 		FA72E2D1221BD98600A5E5CD /* RouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA72E2D0221BD98600A5E5CD /* RouteTests.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		FA4BFE8428769A520044F306 /* SIL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SIL.swift; sourceTree = "<group>"; };
+		FA55E7822877DDE9009803AA /* Deeplink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deeplink.swift; sourceTree = "<group>"; };
 		FA72E2CC221BD95100A5E5CD /* ContextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextTests.swift; sourceTree = "<group>"; };
 		FA72E2CE221BD97E00A5E5CD /* RouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTests.swift; sourceTree = "<group>"; };
 		FA72E2D0221BD98600A5E5CD /* RouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTests.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				FA72E2E8221BDA3100A5E5CD /* Router.swift */,
+				FA55E7822877DDE9009803AA /* Deeplink.swift */,
 				FA72E2D8221BDA0700A5E5CD /* AppDelegate.swift */,
 				FA72E2DA221BDA0700A5E5CD /* HomeViewController.swift */,
 				FA72E2EA221BDC8300A5E5CD /* ProfileViewController.swift */,
@@ -311,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA55E7832877DDE9009803AA /* Deeplink.swift in Sources */,
 				FA72E2DB221BDA0700A5E5CD /* HomeViewController.swift in Sources */,
 				FA72E2E9221BDA3100A5E5CD /* Router.swift in Sources */,
 				FA72E2EB221BDC8300A5E5CD /* ProfileViewController.swift in Sources */,

@@ -40,7 +40,7 @@ class Router {
     // alligator://user/[id]
     // https://www.alligator.com/user/[id]
     @_silgen_name("ditto:/user/:id")
-    func user(context: Context<RoutingCoordinator>) -> Bool {
+    static func user(context: Context<RoutingCoordinator>) -> Bool {
         guard let id: String = try? context.argument(forKey: "id") else {
             return false
         }
@@ -84,7 +84,7 @@ class Router {
     }
 
     static func register() {
-        shared.router.setup()
+        shared.router.register(prefix: "")
     }
 
     @discardableResult

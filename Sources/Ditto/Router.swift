@@ -114,18 +114,21 @@ public extension Router where Coordinator == Void {
 extension Router {
     typealias Handler = @convention(thin) (Context<Coordinator>) -> Bool
 
-    /// Register all routes
-    public func setup() {
+    /// Register all routes with specific prefix
+    /// - Parameter prefix: Defaults `""`, eg. @_silgen_name(ditto:/home)
+    public func register(prefix: String = "") {
         SIL.install()
         DispatchQueue.main.async {
-            self.register(symbols: SIL.shared.symbols)
+            self.register(prefix: prefix, symbols: SIL.shared.symbols)
         }
     }
 
-    private func register(symbols: [String: UnsafeMutableRawPointer?]) {
-        let routes: [(String, Route<Coordinator>.Handler)] = symbols.map {
-            ($0.key, unsafeBitCast($0.value, to: Handler.self))
-        }
+    /// Symbol: `/home` with prefix `""` equals to `module/home` with prefix `module`
+    /// Route endpoint: Symbol - prefix
+    private func register(prefix: String, symbols: [String: UnsafeMutableRawPointer?]) {
+        let routes: [(String, Route<Coordinator>.Handler)] = symbols
+            .filter { $0.key.hasPrefix(prefix) }
+            .map { (String($0.key.dropFirst(prefix.count)), unsafeBitCast($0.value, to: Handler.self)) }
         try? register(routes)
     }
 }

@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Router.register()
+        Deeplink.register()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let rootViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         window?.rootViewController = UINavigationController(rootViewController: rootViewController)
