@@ -16,10 +16,10 @@ class Router {
     static let schemes: [String] = ["https", "http", "alligator"]
     static let hosts: [String] = ["www.alligator.com", "alligator.com", "www.alligator.org"]
 
-    private let router: Ditto.Router<RoutingCoordinator>
+    private let router: Ditto.Router<RouterCoordinator>
 
     var appCoordinator: AppCoodinator?
-    weak var delegate: RoutingCoordinatorDelegate?
+    weak var delegate: RouterCoordinatorDelegate?
 
     private init() {
         router = Ditto.Router(schemes: Router.schemes, hosts: Router.hosts)
@@ -29,7 +29,7 @@ class Router {
     // alligator://home
     // https://www.alligator.com/home
     @_silgen_name("ditto:/home")
-    func home(context: Context<RoutingCoordinator>) -> Bool {
+    func home(context: Context<RouterCoordinator>) -> Bool {
         let rootViewController = appCoordinator?.rootViewController
         rootViewController?.navigationController?
             .popToRootViewController(animated: context.coordinator.animated)
@@ -40,7 +40,7 @@ class Router {
     // alligator://user/[id]
     // https://www.alligator.com/user/[id]
     @_silgen_name("ditto:/user/:id")
-    static func user(context: Context<RoutingCoordinator>) -> Bool {
+    static func user(context: Context<RouterCoordinator>) -> Bool {
         guard let id: String = try? context.argument(forKey: "id") else {
             return false
         }
@@ -55,7 +55,7 @@ class Router {
     // alligator://browser?link=[url]
     // https://www.alligator.com/browser?link=[url]
     @_silgen_name("ditto:/browser")
-    func browser(context: Context<RoutingCoordinator>) -> Bool {
+    func browser(context: Context<RouterCoordinator>) -> Bool {
         guard let url: URL = context.parameter(forKey: "link") else {
             return false
         }
@@ -71,7 +71,7 @@ class Router {
         // 切换环境
         // alligator://development/environment?type=[debug|release]
         @_silgen_name("ditto:/development/environment")
-        func environment(context: Context<RoutingCoordinator>) -> Bool {
+        func environment(context: Context<RouterCoordinator>) -> Bool {
             guard let url: URL = context.parameter(forKey: "link") else {
                 return false
             }
@@ -92,7 +92,7 @@ class Router {
         guard let representation = shared.delegate?.coordinatorRepresentation() else {
             return false
         }
-        let coordinator = RoutingCoordinator(isFromLaunching: isFromLaunching, representation: representation)
+        let coordinator = RouterCoordinator(isFromLaunching: isFromLaunching, representation: representation)
         return shared.router.route(to: destination, coordinator: coordinator)
     }
 
@@ -100,7 +100,7 @@ class Router {
         guard let representation = shared.delegate?.coordinatorRepresentation() else {
             return false
         }
-        let coordinator = RoutingCoordinator(isFromLaunching: false, representation: representation)
+        let coordinator = RouterCoordinator(isFromLaunching: false, representation: representation)
         return shared.router.responds(to: destination, coordinator: coordinator)
     }
 
@@ -109,7 +109,7 @@ class Router {
         guard let representation = shared.delegate?.coordinatorRepresentation() else {
             return false
         }
-        let coordinator = RoutingCoordinator(isFromLaunching: isFromLaunching, representation: representation)
+        let coordinator = RouterCoordinator(isFromLaunching: isFromLaunching, representation: representation)
         return shared.router.route(to: url, coordinator: coordinator)
     }
 
@@ -117,7 +117,7 @@ class Router {
         guard let representation = shared.delegate?.coordinatorRepresentation() else {
             return false
         }
-        let coordinator = RoutingCoordinator(isFromLaunching: false, representation: representation)
+        let coordinator = RouterCoordinator(isFromLaunching: false, representation: representation)
         return shared.router.responds(to: url, coordinator: coordinator)
     }
 }
@@ -149,7 +149,7 @@ extension Router {
         guard let representation = shared.delegate?.coordinatorRepresentation() else {
             return false
         }
-        let coordinator = RoutingCoordinator(isFromLaunching: isFromLaunching, representation: representation)
+        let coordinator = RouterCoordinator(isFromLaunching: isFromLaunching, representation: representation)
         return shared.router.route(to: endpoint, coordinator: coordinator)
     }
 
@@ -157,7 +157,7 @@ extension Router {
         guard let representation = shared.delegate?.coordinatorRepresentation() else {
             return false
         }
-        let coordinator = RoutingCoordinator(isFromLaunching: false, representation: representation)
+        let coordinator = RouterCoordinator(isFromLaunching: false, representation: representation)
         return shared.router.responds(to: endpoint, coordinator: coordinator)
     }
 }
@@ -170,7 +170,7 @@ struct AppCoodinator {
     }
 }
 
-struct RoutingCoordinator {
+struct RouterCoordinator {
     enum Representaion {
         case push(from: UINavigationController, animated: Bool)
         case present(from: UIViewController, animated: Bool)
@@ -228,8 +228,8 @@ struct RoutingCoordinator {
     }
 }
 
-protocol RoutingCoordinatorDelegate: AnyObject {
-    func coordinatorRepresentation() -> RoutingCoordinator.Representaion
+protocol RouterCoordinatorDelegate: AnyObject {
+    func coordinatorRepresentation() -> RouterCoordinator.Representaion
 }
 
 struct User {

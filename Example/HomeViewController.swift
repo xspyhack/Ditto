@@ -27,8 +27,8 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: RoutingCoordinatorDelegate {
-    func coordinatorRepresentation() -> RoutingCoordinator.Representaion {
+extension HomeViewController: RouterCoordinatorDelegate {
+    func coordinatorRepresentation() -> RouterCoordinator.Representaion {
         if let presented = self.presentedViewController as? UINavigationController {
             return .push(from: presented, animated: true)
         }
